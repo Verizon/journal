@@ -2,8 +2,6 @@ organization := "oncue.svc"
 
 name := "journal"
 
-version := "0.1-SNAPSHOT"
-
 scalaVersion := "2.10.4"
 
 scalacOptions ++= Seq(

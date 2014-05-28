@@ -9,7 +9,7 @@ Using Journal is simple:
 #### Step 1: Add the dependency to your project
 
 ````
-libraryDependencies += "oncue.ws" %% "journal" % "x.x.x"
+libraryDependencies += "oncue.svc" %% "journal" % "x.x.x"
 ````
 
 #### Step 2: Configure the logger
