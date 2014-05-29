@@ -1,4 +1,4 @@
-organization := "oncue.svc"
+organization := "oncue.svc.journal"
 
 name := "journal"
 
