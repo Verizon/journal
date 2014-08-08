@@ -5,7 +5,7 @@ OnCue.baseSettings
 
 organization := "oncue.svc.journal"
 
-name := "journal"
+name := "core"
 
 scalaVersion := "2.10.4"
 
