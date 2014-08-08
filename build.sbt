@@ -1,3 +1,8 @@
+
+import oncue.build._
+
+OnCue.baseSettings
+
 organization := "oncue.svc.journal"
 
 name := "journal"
