@@ -1,6 +1,6 @@
 ## Journal
 
-[![Build Status](http://jm-media.sc.intel.com:8080/buildStatus/icon?job=WebServices-journal)](http://jm-media.sc.intel.com:8080/job/WebServices-journal/)
+[![Build Status](https://jenkins.svc.oncue.com:8443/buildStatus/icon?job=WebServices-journal)](https://jenkins.svc.oncue.com:8443/job/WebServices-journal/)
 
 Journal is a fast, simple, asynchronous Scala library for logging, based on SLF4J. It uses Logback as the default backend, but you can supply any backend you want.
 
