@@ -18,8 +18,6 @@ scalacOptions ++= Seq(
   "-language:experimental.macros"
 )
 
-val scalazVerzion = "7.0.0"
-
 libraryDependencies ++= Seq(
   "org.scala-lang"  % "scala-reflect"             % "2.10.4",
   "org.slf4j"       % "slf4j-api"                 % "1.7.+",
