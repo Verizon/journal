@@ -27,3 +27,5 @@ libraryDependencies ++= Seq(
   "org.scalaz"     %% "scalaz-scalacheck-binding" % "7.1.0" % "test",
   "org.scalacheck" %% "scalacheck"                % "1.10.1" % "test"
 )
+
+licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
