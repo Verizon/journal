@@ -19,12 +19,12 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.scala-lang"  % "scala-reflect"             % "2.10.4" % "provided",
+  "org.scala-lang"  % "scala-reflect"             % "2.10.5" % "provided",
   "org.slf4j"       % "slf4j-api"                 % "1.7.+",
   "ch.qos.logback"  % "logback-classic"           % "1.0.+",
-  "org.scalaz"     %% "scalaz-core"               % "7.1.0",
-  "org.scalaz"     %% "scalaz-concurrent"         % "7.1.0",
-  "org.scalaz"     %% "scalaz-scalacheck-binding" % "7.1.0" % "test",
+  "org.scalaz"     %% "scalaz-core"               % "7.1.2",
+  "org.scalaz"     %% "scalaz-concurrent"         % "7.1.2",
+  "org.scalaz"     %% "scalaz-scalacheck-binding" % "7.1.2" % "test",
   "org.scalacheck" %% "scalacheck"                % "1.10.1" % "test"
 )
 
