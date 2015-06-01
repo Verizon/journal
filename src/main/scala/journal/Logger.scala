@@ -44,6 +44,12 @@ sealed class Logger(val backend: Backend, val handler: Actor[LogMessage]) {
     macro LoggerMacro.debugMessageCause
 }
 
+/**
+ * Borrowed generously and adapted from scala-logging (https://github.com/typesafehub/scala-logging)
+ * which is under the Apache 2.0 license.
+ *
+ * Thanks to Heiko Seeberger et al for creating Scala Logging.
+ */
 private object LoggerMacro {
   type LoggerContext = Context { type PrefixType = Logger }
 
