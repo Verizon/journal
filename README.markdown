@@ -1,5 +1,5 @@
 # Journal
 
-[![Build Status](https://jenkins.svc.oncue.com:8443/buildStatus/icon?job=WebServices-journal)](https://jenkins.svc.oncue.com:8443/job/WebServices-journal/)
+[![image](https://travis-ci.org/oncue/journal.svg)](https://travis-ci.org/oncue/journal)
 
-Please [see the documentation](https://github.oncue.verizon.net/pages/IntelMedia/journal) for more information.
+Documentation coming soon.
