@@ -1,9 +1,5 @@
 
-organization := "oncue.journal"
-
 name := "core"
-
-scalaVersion := "2.10.5"
 
 scalacOptions ++= Seq(
   "-feature",
@@ -31,7 +27,7 @@ releaseSettings
 publishMavenStyle := true
 
 scmInfo := Some(ScmInfo(url("https://github.com/oncue/journal"),
-                        "git@github.com:oncue/journal.git"))
+                            "git@github.com:oncue/journal.git"))
 
 bintrayPackageLabels := Seq("logging", "functional programming", "reasonable")
 
