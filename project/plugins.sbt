@@ -1,5 +1,9 @@
-resolvers += "im.nexus" at "http://nexus.svc.oncue.com/nexus/content/groups/intel_media_maven/"
 
-addSbtPlugin("oncue.build" %% "sbt-oncue" % "6.4.+")
+resolvers += Resolver.url(
+  "bintray-sbt-plugin-releases",
+    url("http://dl.bintray.com/content/sbt/sbt-plugin-releases"))(
+        Resolver.ivyStylePatterns)
 
-credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+addSbtPlugin("me.lessis"         % "bintray-sbt" % "0.3.0")
+
+addSbtPlugin("com.github.gseitz" % "sbt-release" % "0.8.5")
