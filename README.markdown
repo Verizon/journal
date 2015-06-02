@@ -2,4 +2,4 @@
 
 [![image](https://travis-ci.org/oncue/journal.svg)](https://travis-ci.org/oncue/journal)
 
-Documentation coming soon.
+Please [view the documentation](http://oncue.github.io/journal/) for more information.
