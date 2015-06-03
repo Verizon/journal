@@ -14,9 +14,10 @@ Using Journal is simple:
 
 ### Step 1: Add the dependency to your project
 
-```
+``` scala
 libraryDependencies += "oncue.journal" %% "core" % "x.x.+"
 ```
+
 (check for the latest release by [looking on bintray](https://bintray.com/oncue/releases/journal/view))
 
 ### Step 2: Configure the logger
@@ -25,7 +26,7 @@ You'll need the `logback.xml` file to actually tell the SLF4J implementation (Lo
 
 *logback.xml OR logger.xml*
 
-````
+``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="false" debug="false">
   <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -37,7 +38,7 @@ You'll need the `logback.xml` file to actually tell the SLF4J implementation (Lo
     <appender-ref ref="stdout" />
   </root>
 </configuration>
-````
+```
 
 This is a very basic configuration. For more good stuff on the appender configuration, read the more detailed section below.
 
@@ -45,17 +46,17 @@ This is a very basic configuration. For more good stuff on the appender configur
 
 ```
 -Dlogback.configurationFile=/path/to/logback.xml
-``` 
+```
 
 ### Step 3: Log your little heart out!
 
 With those setup steps done, you're good to go. Now you can use the logger within your code. Here's a short example:
 
-```
+``` scala
 import journal._
 
 object Foo {
-  lazy val log = Logger[Foo]
+  val log = Logger[Foo]
   def main(args: Array[String]): Unit = {
     log.info("COWS!")
     // Your application code here
@@ -63,7 +64,7 @@ object Foo {
 }
 ```
 
-That's all there is to it. By way of style, we recommend always specifying your logger as a `lazy val`. The reason is that if you never end up using the logger instance (e.g. if your application has no errors to log), the logger will never be initialised.
+That's all there is to it.
 
 <a name="log-levels"></a>
 
@@ -71,7 +72,7 @@ That's all there is to it. By way of style, we recommend always specifying your 
 
 There's a range of methods on the log instance (in order of log level precedence):
 
-````
+``` scala
 error(msg: => String): Unit
 error(msg: => String, t: => Throwable): Unit
 
@@ -83,7 +84,7 @@ warn(msg: => String, t: => Throwable): Unit
 
 debug(msg: => String): Unit
 debug(msg: => String, t: => Throwable): Unit
-````
+```
 
 This is the standard fare in terms of log levels. There is no "trace" level because it's not often clear what "trace" offers over "debug" and people get the two confused. So we just excluded it altogether.
 
