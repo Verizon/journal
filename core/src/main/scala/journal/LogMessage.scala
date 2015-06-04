@@ -18,7 +18,7 @@
 package journal
 
 sealed trait LogMessage
-case class Error(message: String, cause: Option[Throwable] = None) extends LogMessage
-case class Info(message: String, cause: Option[Throwable] = None) extends LogMessage
-case class Warn(message: String, cause: Option[Throwable] = None) extends LogMessage
-case class Debug(message: String, cause: Option[Throwable] = None) extends LogMessage
+final case class Error(message: String, cause: Option[Throwable] = None) extends LogMessage
+final case class Info(message: String, cause: Option[Throwable] = None) extends LogMessage
+final case class Warn(message: String, cause: Option[Throwable] = None) extends LogMessage
+final case class Debug(message: String, cause: Option[Throwable] = None) extends LogMessage
