@@ -11,4 +11,6 @@ lazy val core = project
 
 lazy val docs = project.dependsOn(core)
 
+lazy val benchmark = project.dependsOn(core)
+
 publish := {}
