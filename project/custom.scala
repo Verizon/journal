@@ -65,6 +65,7 @@ object custom {
                             "git@github.com:oncue/journal.git")),
     pomIncludeRepository := { _ => false },
     publishArtifact in Test := false,
+    releasePublishArtifactsAction := publishSigned.value,
     releaseProcess := Seq[ReleaseStep](
       checkSnapshotDependencies,
       inquireVersions,
@@ -72,7 +73,7 @@ object custom {
       setReleaseVersion,
       commitReleaseVersion,
       tagRelease,
-      publishSignedArtifacts,
+      publishArtifacts,
       setNextVersion,
       commitNextVersion,
       pushChanges
