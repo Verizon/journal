@@ -8,6 +8,15 @@ import com.typesafe.sbt.pgp.PgpKeys._
 import bintray.BintrayKeys._
 
 object custom {
+  def ignore = Seq(
+    publish := (),
+    publishSigned := (),
+    publishLocal := (),
+    publishLocalSigned := (),
+    publishArtifact in Test := false,
+    publishArtifact in Compile := false
+  )
+
   lazy val publishSignedArtifacts = ReleaseStep(
     action = st => {
       val extracted = st.extract
@@ -48,11 +57,13 @@ object custom {
         </developer>
       </developers>),
     publishMavenStyle := true,
+    releaseCrossBuild := true,
     licenses := Seq("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html")),
     homepage := Some(url("http://oncue.github.io/journal")),
     scmInfo := Some(ScmInfo(url("https://github.com/oncue/journal"),
                             "git@github.com:oncue/journal.git")),
     pomIncludeRepository := { _ => false },
+    publishArtifact in Test := false,
     releaseProcess := Seq[ReleaseStep](
       checkSnapshotDependencies,
       inquireVersions,

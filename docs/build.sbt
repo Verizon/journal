@@ -17,4 +17,4 @@ includeFilter in makeSite := "*.yml" | "*.md" | "*.html" | "*.css" | "*.png" | "
 
 git.remoteRepo := "git@github.com:oncue/journal.git"
 
-publish := {}
+custom.ignore
