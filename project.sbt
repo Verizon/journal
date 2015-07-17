@@ -1,9 +1,10 @@
 
-organization in Global := "oncue.journal"
-
-scalaVersion in Global := "2.10.5"
+// had to swap over to com.verizon due to maven central policy
+organization in Global := "com.verizon.journal"
 
 crossScalaVersions in Global := Seq("2.10.5", "2.11.6")
+
+scalaVersion in Global := crossScalaVersions.value.head
 
 resolvers += Resolver.sonatypeRepo("releases")
 
