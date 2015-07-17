@@ -10,8 +10,9 @@ resolvers += Resolver.url(
         Resolver.ivyStylePatterns)
 
 addSbtPlugin("me.lessis"         % "bintray-sbt" % "0.3.0")
-addSbtPlugin("com.github.gseitz" % "sbt-release" % "0.8.5")
+addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.1")
 addSbtPlugin("com.typesafe.sbt"  % "sbt-site"    % "0.8.1")
 addSbtPlugin("com.typesafe.sbt"  % "sbt-ghpages" % "0.5.3")
 addSbtPlugin("org.tpolecat"      % "tut-plugin"  % "0.3.2")
 addSbtPlugin("com.timushev.sbt"  % "sbt-updates" % "0.1.8")
+addSbtPlugin("com.jsuereth"      % "sbt-pgp"     % "1.0.0")

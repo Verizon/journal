@@ -18,3 +18,4 @@ bin
 .project
 .ivy2
 *~
+gpg.sbt
