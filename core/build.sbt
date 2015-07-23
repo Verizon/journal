@@ -20,4 +20,4 @@ libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck"                % "1.12.3" % "test"
 )
 
-custom.publishing
+custom.settings

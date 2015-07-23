@@ -1,6 +1,5 @@
 
-// had to swap over to com.verizon due to maven central policy
-organization in Global := "com.verizon.journal"
+organization in Global := "oncue.journal"
 
 crossScalaVersions in Global := Seq("2.10.5", "2.11.6")
 
