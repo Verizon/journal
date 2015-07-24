@@ -1,7 +1,7 @@
 
 organization in Global := "oncue.journal"
 
-crossScalaVersions in Global := Seq("2.10.5", "2.11.6")
+crossScalaVersions in Global := Seq("2.10.5", "2.11.7")
 
 scalaVersion in Global := crossScalaVersions.value.head
 
