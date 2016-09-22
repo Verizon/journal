@@ -1,10 +1,44 @@
 language: scala
 scala:
   - 2.10.5
-  - 2.11.6
+  - 2.11.7
+
 jdk:
   - oraclejdk8
-  - oraclejdk7
-  - openjdk6
 
-script: sbt ++$TRAVIS_SCALA_VERSION test
+branches:
+  only:
+  - master
+
+before_script:
+  - "if [ $TRAVIS_PULL_REQUEST = 'false' ]; then git checkout -qf $TRAVIS_BRANCH; fi"
+
+script:
+  - |
+    if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+      if [ $RELEASE_ON_PUSH = 'false' ]; then
+        sbt test coverageReport
+      else
+        sbt ++$TRAVIS_SCALA_VERSION 'release with-defaults'
+      fi
+    else
+      sbt test coverageReport
+    fi
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot/scala-$TRAVIS_SCALA_VERSION
+
+after_success:
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+  - "bash <(curl -s https://codecov.io/bash) -r $TRAVIS_REPO_SLUG -t $CODECOV_TOKEN"
+
+env:
+  global:
+    - secure: "gvpdCQyA+yT/TfXnYXDC9+n16aPPtnDUgzGzEfJXiFnaar6ve5zhf8y9pVr8MMREx4HUxRV/oFBXI7SNkmsg6RPmaTH8V+PNbsHnzy0MxXlskjDQg5vRxqm5kqR+ypJg8TYYmo6AeGtNWbr1Vws9wHHSnqv7OtzHV2ujKOcFdEE="
+    - secure: "M0c0FG8yJA36TmKM7BBG/LXNPXnojzj7G5BgDTTqpknc1le9iV1EuGBdxldpRXTqCdWMxvKniPj8hjErI+kwjpybizD+Io2HGbT3OedfxL1jlkzaKOB8pjE3+E1v2Yi1jlgzGtUDexRuq+1s5GtU1sFDr/qo9s8IGY9WUShseiI="
+    - secure: "WDlk/ssMbKjraSLypcYQSlbVSVeA76qqqE32Yn4Fv3AKKT+pxdo6VNlaxpoM2R1oCLTXO18FRSKu2V5n/8zVCiypEYSm3DDzbY/rs8CyUEeNxJDB9+MebPWR53emo5/O+8gBAQlAxz8PaICArz7lYAW2ZulBHjPUwlkfrfz7piA="

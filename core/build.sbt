@@ -1,15 +1,4 @@
 
-name := "core"
-
-scalacOptions ++= Seq(
-  "-feature",
-  "-deprecation",
-  "-language:implicitConversions",
-  "-language:higherKinds",
-  "-language:existentials",
-  "-language:experimental.macros"
-)
-
 libraryDependencies ++= Seq(
   "org.slf4j"       % "slf4j-api"                 % "1.7.12",
   "ch.qos.logback"  % "logback-classic"           % "1.1.3",
@@ -20,4 +9,4 @@ libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck"                % "1.12.3" % "test"
 )
 
-custom.settings
+scalacOptions += "-language:experimental.macros"
