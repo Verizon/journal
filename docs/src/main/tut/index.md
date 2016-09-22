@@ -56,7 +56,7 @@ With those setup steps done, you're good to go. Now you can use the logger withi
 import journal._
 
 object Foo {
-  val log = Logger[Foo]
+  val log = Logger[this.type]
   def main(args: Array[String]): Unit = {
     log.info("COWS!")
     // Your application code here
