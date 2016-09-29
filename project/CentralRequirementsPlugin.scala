@@ -1,7 +1,7 @@
 package verizon.build
 
 import sbt._, Keys._
-import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
+import xerial.sbt.Sonatype, Sonatype.autoImport._
 
 object CentralRequirementsPlugin extends AutoPlugin {
 
