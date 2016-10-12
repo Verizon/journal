@@ -15,10 +15,10 @@ Using Journal is simple:
 ### Step 1: Add the dependency to your project
 
 ``` scala
-libraryDependencies += "oncue.journal" %% "core" % "x.x.+"
+libraryDependencies += "io.verizon.journal" %% "core" % "x.x.+"
 ```
 
-(check for the latest release by [looking on bintray](https://bintray.com/oncue/releases/journal/view))
+(check for the latest release by [looking on Mavenm Central](https://maven-badges.herokuapp.com/maven-central/io.verizon.journal/core_2.11))
 
 ### Step 2: Configure the logger
 
