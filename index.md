@@ -15,10 +15,10 @@ Using Journal is simple:
 ### Step 1: Add the dependency to your project
 
 ``` scala
-libraryDependencies += "oncue.journal" %% "core" % "x.x.+"
+libraryDependencies += "io.verizon.journal" %% "core" % "x.x.+"
 ```
 
-(check for the latest release by [looking on bintray](https://bintray.com/oncue/releases/journal/view))
+(check for the latest release by [looking on Maven Central](https://maven-badges.herokuapp.com/maven-central/io.verizon.journal/core_2.11))
 
 ### Step 2: Configure the logger
 
@@ -56,7 +56,7 @@ With those setup steps done, you're good to go. Now you can use the logger withi
 import journal._
 
 object Foo {
-  val log = Logger[Foo]
+  val log = Logger[this.type]
   def main(args: Array[String]): Unit = {
     log.info("COWS!")
     // Your application code here
