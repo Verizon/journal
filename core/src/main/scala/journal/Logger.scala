@@ -19,7 +19,6 @@ package journal
 
 import org.slf4j.{Logger => Backend, LoggerFactory}
 import scalaz.concurrent._
-import scala.reflect.macros.Context
 import java.util.concurrent.{ThreadFactory, Executors}
 
 sealed class Logger(val backend: Backend, val handler: Actor[LogMessage]) {
@@ -51,7 +50,7 @@ sealed class Logger(val backend: Backend, val handler: Actor[LogMessage]) {
  * Thanks to Heiko Seeberger et al for creating Scala Logging.
  */
 private object LoggerMacro {
-  type LoggerContext = Context { type PrefixType = Logger }
+  type LoggerContext = ContextType.ContextType { type PrefixType = Logger }
 
   def errorMessage(c: LoggerContext)(message: c.Expr[String]) =
     c.universe.reify {
