@@ -6,7 +6,7 @@ section: "home"
 
 # Introduction
 
-Journal is a fast, simple, asynchronous Scala library for logging, based on SLF4J. It uses Logback as the default backend, but you can supply any backend you want.
+Journal is a fast, simple, Scala library for logging, based on SLF4J. It uses Logback as the default backend, but you can supply any backend you want.
 
 ## Getting Started
 
@@ -92,11 +92,30 @@ There are no methods to check whether certain log levels are enabled. You should
 
 <a name="threading"></a>
 
-# Threading
+# Asynchronous logging
 
-There is no need to shut down your logger at the end. The logger uses a bounded pool of daemon threads that will be shut down automatically when your program terminates.
+Journal originally used an actor internally to make the logging of messages asynchronous, but since it was created, logging backends have gained their own ability to support asynchronous logging. So journal is no longer asynchronous, we expect that if you need asynchronous logging, you will configure that in your logging backend. With logback, this is accomplished by attaching an AsyncAppender to some other synchronous appender. For example:
 
-Because it uses a thread pool, calling the methods on the logger _does not block_ your own thread. It returns control back to you immediately.
+```xml
+<configuration>
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>/var/log/my.log</file>
+    <encoder>
+      <pattern>%logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="FILE" />
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="ASYNC" />
+  </root>
+</configuration>
+```
+
+Read more about the AsyncAppender [in the logback documentation](http://logback.qos.ch/manual/appenders.html#AsyncAppender).
 
 <a name="migration"></a>
 
