@@ -18,11 +18,10 @@
 package journal
 
 import org.slf4j.{Logger => Backend, LoggerFactory}
-import scalaz.concurrent._
 import scala.reflect.macros.Context
 import java.util.concurrent.{ThreadFactory, Executors}
 
-sealed class Logger(val backend: Backend, val handler: Actor[LogMessage]) {
+sealed class Logger(val backend: Backend, val handler: LogMessage => Unit) {
   def error(message: String): Unit =
     macro LoggerMacro.errorMessage
   def error(message: String, cause: Throwable): Unit =
@@ -103,23 +102,13 @@ private object LoggerMacro {
 }
 
 object Logger {
-  // For now the logger has a dedicated daemon thread
-  implicit val S: Strategy = Strategy.Executor(java.util.concurrent.Executors.newSingleThreadExecutor(new ThreadFactory {
-    def newThread(r: Runnable) = {
-      val thread = Executors.defaultThreadFactory.newThread(r)
-      thread.setDaemon(true)
-      thread.setName("Journal-logger-daemon")
-      thread
-    }
-  }))
-
   def apply[A](implicit A: Manifest[A]): Logger =
     apply(LoggerFactory.getLogger(A.runtimeClass))
 
   def apply(name: String): Logger = apply(LoggerFactory.getLogger(name))
 
   def apply(backend: Backend): Logger =
-    new Logger(backend, Actor[LogMessage]({
+    new Logger(backend, {
       case Error(message, None) => backend.error(message)
       case Error(message, Some(e)) => backend.error(message, e)
       case Info(message, None) => backend.info(message)
@@ -128,6 +117,6 @@ object Logger {
       case Warn(message, Some(e)) => backend.warn(message, e)
       case Debug(message, None) => backend.debug(message)
       case Debug(message, Some(e)) => backend.debug(message, e)
-    }))
+    })
 }
 
